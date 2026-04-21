@@ -24,17 +24,27 @@ rest
     Routes.applicationCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
     {
       body: Commands,
-    }
+    },
   )
   .then((data) =>
-    console.log(`Successfully registered ${data.length} application commands.`)
+    console.log(`Successfully registered ${data.length} application commands.`),
   )
   .catch(console.error);
 
 connectDb()
   .then(() =>
     console.log(
-      `Successfully connected to ${process.env.DB_HOST} on database ${process.env.DB_NAME}!`
-    )
+      `Successfully connected to ${process.env.DB_HOST} on database ${process.env.DB_NAME}!`,
+    ),
   )
   .catch(console.error);
+
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Rejection:", err);
+  process.exit(1);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1);
+});

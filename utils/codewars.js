@@ -8,6 +8,7 @@ export const getUser = async (user) => {
 export const getCompletedCodeKatas = async (user) => {
   const url = `https://www.codewars.com/api/v1/users/${user}/code-challenges/completed`;
   const res = await fetch(url);
+  if (!res.ok) return [];
   const json = await res.json();
   return json.data;
 };

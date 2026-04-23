@@ -38,6 +38,5 @@ export const interactionCreateHandler = async (interaction) => {
     } else {
       await interaction.reply(msg);
     }
-    throw new Error("INTERACTION ERROR");
   }
 };

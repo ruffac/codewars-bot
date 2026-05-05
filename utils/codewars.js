@@ -8,8 +8,11 @@ export const getUser = async (user) => {
 export const getCompletedCodeKatas = async (user) => {
   const url = `https://www.codewars.com/api/v1/users/${user}/code-challenges/completed`;
   const res = await fetch(url);
+  console.log("getCompletedCodeKatas res" + res.ok);
   if (!res.ok) return [];
   const text = await res.text();
+  console.log("getCompletedCodeKatas res text" + text);
+
   try {
     const json = JSON.parse(text);
     return json.data ?? [];

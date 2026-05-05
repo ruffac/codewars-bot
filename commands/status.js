@@ -26,9 +26,9 @@ export const status = async (interaction) => {
   await interaction.reply("Fetching stats ...");
 
   const status = await getChallengeStatus(challenge);
-  status.forEach(async (status) => {
-    await interaction.followUp(status);
-  });
+  for (const msg of status) {
+    await interaction.followUp(msg);
+  }
 };
 
 export const getChallengeStatus = async (challenge) => {
